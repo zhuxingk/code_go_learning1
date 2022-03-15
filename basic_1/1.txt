@@ -1,0 +1,47 @@
+# command-line-arguments
+.\escape memory.go:14:20: *p0 escapes to heap:
+.\escape memory.go:14:20:   flow: {storage for ... argument} = &{storage for *p0}:
+.\escape memory.go:14:20:     from *p0 (spill) at .\escape memory.go:14:20
+.\escape memory.go:14:20:     from ... argument (slice-literal-element) at .\escape memory.go:14:13
+.\escape memory.go:14:20:   flow: {heap} = {storage for ... argument}:
+.\escape memory.go:14:20:     from ... argument (spill) at .\escape memory.go:14:13
+.\escape memory.go:14:20:     from fmt.Println(... argument...) (call parameter) at .\escape memory.go:14:13
+.\escape memory.go:14:14: "*p0" escapes to heap:
+.\escape memory.go:14:14:   flow: {storage for ... argument} = &{storage for "*p0"}:
+.\escape memory.go:14:14:     from "*p0" (spill) at .\escape memory.go:14:14
+.\escape memory.go:14:14:     from ... argument (slice-literal-element) at .\escape memory.go:14:13
+.\escape memory.go:14:14:   flow: {heap} = {storage for ... argument}:
+.\escape memory.go:14:14:     from ... argument (spill) at .\escape memory.go:14:13
+.\escape memory.go:14:14:     from fmt.Println(... argument...) (call parameter) at .\escape memory.go:14:13
+.\escape memory.go:15:2: city escapes to heap:
+.\escape memory.go:15:2:   flow: ptr = &city:
+.\escape memory.go:15:2:     from &city (address-of) at .\escape memory.go:16:9
+.\escape memory.go:15:2:     from ptr := &city (assign) at .\escape memory.go:16:6
+.\escape memory.go:15:2:   flow: ~r0 = ptr:
+.\escape memory.go:15:2:     from return ptr (return) at .\escape memory.go:17:2
+.\escape memory.go:15:2: moved to heap: city
+.\escape memory.go:14:13: ... argument does not escape
+.\escape memory.go:14:14: "*p0" escapes to heap
+.\escape memory.go:14:20: *p0 escapes to heap
+.\escape memory.go:7:21: *p1 escapes to heap:
+.\escape memory.go:7:21:   flow: {storage for ... argument} = &{storage for *p1}:
+.\escape memory.go:7:21:     from *p1 (spill) at .\escape memory.go:7:21
+.\escape memory.go:7:21:     from ... argument (slice-literal-element) at .\escape memory.go:7:13
+.\escape memory.go:7:21:   flow: {heap} = {storage for ... argument}:
+.\escape memory.go:7:21:     from ... argument (spill) at .\escape memory.go:7:13
+.\escape memory.go:7:21:     from fmt.Println(... argument...) (call parameter) at .\escape memory.go:7:13
+.\escape memory.go:7:14: "ptr" escapes to heap:
+.\escape memory.go:7:14:   flow: {storage for ... argument} = &{storage for "ptr"}:
+.\escape memory.go:7:14:     from "ptr" (spill) at .\escape memory.go:7:14
+.\escape memory.go:7:14:     from ... argument (slice-literal-element) at .\escape memory.go:7:13
+.\escape memory.go:7:14:   flow: {heap} = {storage for ... argument}:
+.\escape memory.go:7:14:     from ... argument (spill) at .\escape memory.go:7:13
+.\escape memory.go:7:14:     from fmt.Println(... argument...) (call parameter) at .\escape memory.go:7:13
+.\escape memory.go:7:13: ... argument does not escape
+.\escape memory.go:7:14: "ptr" escapes to heap
+.\escape memory.go:7:21: *p1 escapes to heap
+
+package sub
+func Sub(a,b int)int{
+	return a-b
+}
